@@ -105,6 +105,32 @@
             border: none;
             border-radius: 2px;
         }
+        
+        /* Mobile-specific improvements */
+        @media (max-width: 640px) {
+            .timeline-box {
+                min-width: 200px;
+                padding: 1rem;
+            }
+            
+            .timeline li {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .timeline li:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .timeline-start, .timeline-end {
+                order: 1;
+                flex: none;
+            }
+            
+            .timeline-middle {
+                order: 2;
+            }
+        }
     </style>
     <script src="js/counter.js"></script>
     <script src="js/navbar.js"></script>
@@ -123,7 +149,7 @@
     <nav data-controller="navbarc" data-navbarc-target="content" class="border-gray-200 fixed top-0 z-50 w-full transition-all duration-500 bg-header-dark">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
             <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="images/logo.png"
+                <img src="images/logo.webp"
                     class="h-10" alt="Blue Ventures Logo" />
             </a>
             <button data-collapse-toggle="navbar-default" type="button"
@@ -141,23 +167,23 @@
                     class="font-normal flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent">
                     <li>
                         <a href="#hero"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Home</a>
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-custom-blue md:p-0 ">Home</a>
                     </li>
                     <li>
                         <a href="#about"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">About</a>
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-custom-blue md:p-0 ">About</a>
                     </li>
                     <li>
                         <a href="#timeline"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Timeline</a>
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-custom-blue md:p-0 ">Timeline</a>
                     </li>
                     <li>
                         <a href="#contact"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Contact</a>
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-custom-blue md:p-0">Contact</a>
                     </li>
                     <li>
                         <a href="https://lu.ma/fy72j0jm" target="_blank" rel="noopener noreferrer"
-                            class="block py-3 px-6 text-white rounded-lg bg-custom-blue hover:bg-custom-blue-dark transition-colors duration-200 font-semibold">Register Now</a>
+                            class="block py-3 px-6 text-white rounded-lg bg-custom-blue hover:bg-custom-blue-dark transition-colors duration-200 font-semibold text-center">Register Now</a>
                     </li>
                 </ul>
             </div>
@@ -166,7 +192,7 @@
     <main>
         <div id="hero" class="relative w-full h-full">
             <!-- Imagen de fondo -->
-            <img src="images/header-foto.png" alt="Fondo" class="w-full h-screen object-cover">
+            <img src="images/header-foto.webp" alt="Fondo" class="w-full h-screen object-cover object-left md:object-center">
 
             <!-- Texto sobre la imagen -->
             <div
@@ -180,12 +206,12 @@
                     <h1 class="text-4xl md:text-6xl font-bold">Build the <br
                             class="md: hidden"> <br class="md:hidden"> <span data-controller="typing"
                             data-typing-target="text" class="text-custom-blue"></span></h1>
-                    <p class="mt-2 text-xl md:text-xl max-w-2xl">Join us this summer for our first-ever week-long innovation challenge. 
-                        Over seven days, you and your team will build a functional prototype with real-world applications.</p>
+                    <p class="mt-2 text-xl md:text-xl max-w-2xl">Get ready to build something amazing this summer at our first ever week long hackathon! For seven intense days, 
+                        you and your team will dive into real world problems and develop the product you believe can make a difference.</p>
                     <div class="mt-4 flex items-center gap-x-6">
                         <a href="https://lu.ma/fy72j0jm" target="_blank" rel="noopener noreferrer"
-                            class="rounded-md bg-custom-blue px-6 py-3 text-lg font-bold text-black shadow-lg hover:bg-custom-blue-dark focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-indigo-400 transform hover:scale-105 transition-all duration-200">Register Now</a>
-                        <a href="#" class="text-lg font-semibold text-white">View Timeline <span
+                            class="rounded-md bg-custom-blue px-6 py-4 text-lg font-bold text-black shadow-lg hover:bg-custom-blue-dark focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-indigo-400 transform hover:scale-105 transition-all duration-200">Register Now</a>
+                        <a href="#timeline" class="text-lg font-semibold text-white hover:text-custom-blue transition-colors duration-200">View Timeline <span
                                 aria-hidden="true">→</span></a>
                     </div>
                 </div>
@@ -200,7 +226,7 @@
                     <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
                         About the Hackathon
                     </h2>
-                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.webp" alt="">
                 </div>
                 <div class="mt-4 space-y-2">
                     <div
@@ -209,7 +235,7 @@
                         <div
                             class="relative w-60 h-60 md:w-72 md:h-72 hover:rotate-[-10deg] hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 border-7 border-custom-blue rounded-full"></div>
-                            <img src="images/farmer.png" alt="Farmer"
+                            <img src="images/farmer.webp" alt="Farmer"
                                 class="w-full h-full object-cover rounded-full border-4 border-white p-4">
                         </div>
 
@@ -223,10 +249,9 @@
                             </div>
 
                             <p class="mt-4 text-n leading-relaxed text-white">
-                                Join us this summer for our first-ever week-long innovation challenge. Over seven days, 
-                                you and your team will build a functional prototype with real-world applications. 
-                                This isn't your typical weekend hackathon. Our extended format allows for deeper research 
-                                and development. Work daily with experienced industry mentors who will guide you from concept to working demo.
+                                Get ready for the first-ever Blue Venture Hackathon coming this fall! This isn't just a weekend sprint;
+                                it's a week-long deep dive into solving pressing industry challenges across various tracks.
+                                Teams will dedicate seven days to research, develop, and build innovative solutions within their chosen area. You'll work side-by-side with experienced industry mentors daily, guiding your team from initial concept to a polished, working demo. This is your chance to immerse yourself in a challenging project, collaborating and refining your technical skills.
                             </p>
                         </div>
                     </div>
@@ -236,19 +261,23 @@
                         <div class="max-w-lg text-white">
                             <div class="flex flex-col">
                                 <h2 class="text-2xl md:text-3xl font-semibold text-white flex items-center gap-2">
-                                    Why Participate?
-                                </h2>
+                                    Ready to build, learn, grow, and have fun?                                </h2>
                                 <span class="w-40 h-1 bg-custom-blue inline-block"></span>
                             </div>
 
                             <p class="mt-4 text-n leading-relaxed text-white">
-                                Whether you're a seasoned programmer or just starting out, this is your chance to build industry connections, 
-                                learn from experts, and bring your ideas to life. Connect with great mentors. Transform your ideas into reality. 
-                                Shape what's next.
+                                This hackathon welcomes both experienced coders and those eager to jump in. It's a unique opportunity to:
+                                <ul class="list-disc list-inside text-white">
+                                    <li>Team Up & Build Awesome Stuff: Collaborate with passionate individuals, challenge yourself, and build something great from sratch.</li>
+                                    <li>Level Up Your Skills: Dive into the newest tech, learn directly from industry mentors, and gain real-world experience under pressure.</li>
+                                    <li>Connect & Network: Meet industry experts, fellow innovators, and potential employers - maybe you'll even find your next opportunity!</li>
+                                    <li>Unleash Your Creativity: Bring that idea you've always wanted to try and see it become a reality!</li>
+                                </ul>
                             </p>
+                            <br>
                             <div class="mt-5">
                                 <a href="https://lu.ma/fy72j0jm" target="_blank" rel="noopener noreferrer"
-                                    class="px-6 rounded-md bg-custom-blue py-3 text-lg font-bold text-black shadow-lg hover:bg-custom-blue-dark transform hover:scale-105 transition-all duration-200">
+                                    class="px-6 rounded-md bg-custom-blue py-4 text-lg font-bold text-black shadow-lg hover:bg-custom-blue-dark transform hover:scale-105 transition-all duration-200">
                                     Register Now
                                 </a>
                             </div>
@@ -257,7 +286,7 @@
                         <div
                             class="relative w-60 h-60 md:w-72 md:h-72 hover:rotate-[-10deg] hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 border-7 border-custom-blue rounded-full"></div>
-                            <img src="images/childs.png" alt="childs"
+                            <img src="images/childs.webp" alt="childs"
                                 class="w-full h-full object-cover rounded-full border-4 border-white p-4">
                         </div>
                     </div>
@@ -274,7 +303,7 @@
                     <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
                         Event Timeline
                     </h2>
-                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.webp" alt="">
                     <br>
                     <br>
                 </div>
@@ -292,7 +321,7 @@
                     <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
                         Project Tracks
                     </h2>
-                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.webp" alt="">
                 </div>
                 <br>
                 <ul role="list"
@@ -302,12 +331,12 @@
                         <!-- Contenedor de imagen -->
                         <div
                             class="relative aspect-[3/2] w-full bg-blue-500/40 group-hover:bg-blue-500/50 rounded-t-2xl transition-all duration-500 ease-in-out group-hover:overflow-visible">
-                            <img src="images/products/pattern.png" alt="Background"
+                            <img src="images/products/pattern.webp" alt="Background"
                                 class="absolute inset-0 w-full h-full object-cover opacity-10 rounded-2xl">
 
                             <!-- Imagen -->
                             <img class="absolute inset-0 w-full h-full object-scale-down transition-transform duration-500 group-hover:scale-125 group-hover:translate-y-[-20%] group-hover:z-10"
-                                src="/images/products/coffee.png" alt="AI/ML">
+                                src="/images/products/coffee.webp" alt="AI/ML">
                         </div>
 
                         <div class="px-4">
@@ -323,12 +352,12 @@
                         <!-- Contenedor de imagen -->
                         <div
                             class="relative aspect-[3/2] w-full bg-purple-500/40 group-hover:bg-purple-500/50 rounded-t-2xl transition-all duration-500 ease-in-out group-hover:overflow-visible">
-                            <img src="images/products/pattern.png" alt="Background"
+                            <img src="images/products/pattern.webp" alt="Background"
                                 class="absolute inset-0 w-full h-full object-cover opacity-10  rounded-2xl">
 
                             <!-- Imagen -->
                             <img class="absolute inset-0 w-full h-full object-scale-down transition-transform duration-500 group-hover:scale-125 group-hover:translate-y-[-20%] group-hover:z-10"
-                                src="/images/products/avocado.png" alt="Web Development">
+                                src="/images/products/avocado.webp" alt="Web Development">
                         </div>
 
                         <div class="px-4">
@@ -344,12 +373,12 @@
                         <!-- Contenedor de imagen -->
                         <div
                             class="relative aspect-[3/2] w-full bg-green-500/40 group-hover:bg-green-500/50 rounded-t-2xl transition-all duration-500 ease-in-out group-hover:overflow-visible">
-                            <img src="images/products/pattern.png" alt="Background"
+                            <img src="images/products/pattern.webp" alt="Background"
                                 class="absolute inset-0 w-full h-full object-cover opacity-10  rounded-2xl">
 
                             <!-- Imagen -->
                             <img class="absolute inset-0 w-full h-full object-scale-down transition-transform duration-500 group-hover:scale-125 group-hover:translate-y-[-20%] group-hover:z-10"
-                                src="/images/products/plantains.png" alt="Mobile Development">
+                                src="/images/products/plantains.webp" alt="Mobile Development">
                         </div>
 
                         <div class="px-4">
@@ -371,7 +400,7 @@
                     <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
                         Our Mentors
                     </h2>
-                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.webp" alt="">
                     <br>
                     <br>
                 </div>
@@ -379,7 +408,7 @@
                     
                     <div class="block group flex flex-col items-center w-48">
                         <div class="relative mb-6">
-                            <img src="images/mentors/Jing Zhu.png" alt="Jing Zhu"
+                            <img src="images/mentors/Jing Zhu.webp" alt="Jing Zhu"
                                 class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
                         </div>
                         <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
@@ -391,7 +420,7 @@
 
                     <div class="block group flex flex-col items-center w-48">
                         <div class="relative mb-6">
-                            <img src="images/mentors/tahong.png" alt="Tao Hong"
+                            <img src="images/mentors/tahong.webp" alt="Tao Hong"
                                 class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
                         </div>
                         <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
@@ -403,7 +432,7 @@
                     
                     <div class="block group flex flex-col items-center w-48">
                         <div class="relative mb-6">
-                            <img src="images/mentors/jiangqi_ying.png" alt="Jiangqi Ying"
+                            <img src="images/mentors/jiangqi_ying.webp" alt="Jiangqi Ying"
                                 class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
                         </div>
                         <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
@@ -415,7 +444,7 @@
                     
                     <div class="block group flex flex-col items-center w-48">
                         <div class="relative mb-6">
-                            <img src="images/mentors/jnigwen_wang.png" alt="Jingwen Wang"
+                            <img src="images/mentors/jnigwen_wang.webp" alt="Jingwen Wang"
                                 class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
                         </div>
                         <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
@@ -427,7 +456,7 @@
                     
                     <div class="block group flex flex-col items-center w-48">
                         <div class="relative mb-6">
-                            <img src="images/mentors/dave.png" alt="Dave Wang"
+                            <img src="images/mentors/dave.webp" alt="Dave Wang"
                                 class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
                         </div>
                         <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
@@ -444,26 +473,26 @@
         <!-- Our Partners -->
         <div class="bg-header-dark h-full">
             <div class="relative w-screen h-full">
-                <img src="images/bg-partners.png" class="absolute inset-0 w-full h-full object-cover z-0"
+                <img src="images/bg-partners.webp" class="absolute inset-0 w-full h-full object-cover z-0"
                     alt="Background">
                 <div class="relative z-10 py-10 ">
                     <div class="lg:mx-0 w-full flex flex-col justify-center align-center items-center">
                         <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
                             Our Partners
                         </h2>
-                        <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                        <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.webp" alt="">
                         <br>
                     </div>
                     <div data-controller="marquee" class="overflow-hidden w-full ">
                         <div data-marquee-target="logos" class="flex space-x-4 md:space-x-10 w-max">
-                            <img src="images/brands/beshton_software_logo.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Beshton Software Logo">
-                            <img src="images/brands/panbotica.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Panbotica Logo">
-                            <img src="images/brands/growth-logo.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Growth Logo">
-                            <img src="images/brands/can.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Can Logo">
-                            <img src="images/brands/beshton_software_logo.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Beshton Software Logo">
-                            <img src="images/brands/panbotica.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Panbotica Logo">
-                            <img src="images/brands/growth-logo.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Growth Logo">
-                            <img src="images/brands/can.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Can Logo">
+                            <img src="images/brands/beshton_software_logo.webp" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Beshton Software Logo">
+                            <img src="images/brands/panbotica.webp" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Panbotica Logo">
+                            <img src="images/brands/growth-logo.webp" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Growth Logo">
+                            <img src="images/brands/can.webp" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Can Logo">
+                            <img src="images/brands/beshton_software_logo.webp" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Beshton Software Logo">
+                            <img src="images/brands/panbotica.webp" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Panbotica Logo">
+                            <img src="images/brands/growth-logo.webp" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Growth Logo">
+                            <img src="images/brands/can.webp" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Can Logo">
                         </div>
                     <br>
                     </div>
@@ -479,7 +508,7 @@
                     <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
                         F.A.Q
                     </h2>
-                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.webp" alt="">
                 </div>
                 <div class="flex flex-col space-y-4 mt-8">
                     <details class="border-b border-custom-blue pb-4">
