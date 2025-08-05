@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week-Long Innovation Challenge 2025</title>
+
+    <link href="/css/output.css" rel="stylesheet">
+    <style>
+        .text-custom-blue {
+            color: #09c1e8 !important;
+        }
+        .border-custom-blue {
+            border-color: #09c1e8 !important;
+        }
+        .bg-custom-blue {
+            background-color: #09c1e8 !important;
+        }
+        .hover\:bg-custom-blue-dark:hover {
+            background-color: #0789a8 !important;
+        }
+        .bg-header-dark {
+            background-color: #010206 !important;
+        }
+        .bg-header-dark-section {
+            background-color: #010206 !important;
+        }
+        
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        .timeline-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .timeline li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .timeline-start {
+            order: 1;
+            flex: 1;
+        }
+        
+        .timeline-middle {
+            order: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: #09c1e8;
+            color: white;
+            z-index: 10;
+            flex-shrink: 0;
+        }
+        
+        .timeline-end {
+            order: 3;
+            flex: 1;
+        }
+        
+        .timeline-box {
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            background-color: #010206;
+            border: 2px solid #09c1e8;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            min-width: 250px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timeline li:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline li:nth-child(even) .timeline-start {
+            order: 3;
+        }
+        
+        .timeline li:nth-child(even) .timeline-end {
+            order: 1;
+        }
+        
+        hr {
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #09c1e8, transparent);
+            border: none;
+            border-radius: 2px;
+        }
+    </style>
+    <script src="js/counter.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/navbar_dropdown.js"></script>
+    <script src="js/typing.js"></script>
+    <script src="js/marquee.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/register-form.js"></script>
+
+    <!-- Open Streed map implementation -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+    <nav data-controller="navbarc" data-navbarc-target="content" class="border-gray-200 fixed top-0 z-50 w-full transition-all duration-500 bg-header-dark">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
+            <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="images/logo.png"
+                    class="h-10" alt="Blue Ventures Logo" />
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-300 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul
+                    class="font-normal flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent">
+                    <li>
+                        <a href="#hero"
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about"
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">About</a>
+                    </li>
+                    <li>
+                        <a href="#timeline"
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Timeline</a>
+                    </li>
+                    <li>
+                        <a href="#contact"
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Contact</a>
+                    </li>
+                    <li>
+                        <a href="https://lu.ma/fy72j0jm" target="_blank" rel="noopener noreferrer"
+                            class="block py-3 px-6 text-white rounded-lg bg-custom-blue hover:bg-custom-blue-dark transition-colors duration-200 font-semibold">Register Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div id="hero" class="relative w-full h-full">
+            <!-- Imagen de fondo -->
+            <img src="images/header-foto.png" alt="Fondo" class="w-full h-screen object-cover">
+
+            <!-- Texto sobre la imagen -->
+            <div
+                class="absolute inset-0 flex items-center justify-center text-white text-start bg-[#010206]/60 md:bg-transparent md:w-5/6 md:bg-gradient-to-r md:from-[#010206] md:to-transparent md:justify-start  ">
+                <div class="px-6 flex flex-col gap-y-3 md:px-0 md:mx-0 md:ml-10 md:w-8/10 ">
+                    <div>
+                        <span
+                            class="inline-flex items-center rounded-full px-4 py-2 text-xl font-medium text-custom-blue border-2 ring-inset border-custom-blue">7 Day Innovation Challenge
+                        </span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold">Build the <br
+                            class="md: hidden"> <br class="md:hidden"> <span data-controller="typing"
+                            data-typing-target="text" class="text-custom-blue"></span></h1>
+                    <p class="mt-2 text-xl md:text-xl max-w-2xl">Join us this summer for our first-ever week-long innovation challenge. 
+                        Over seven days, you and your team will build a functional prototype with real-world applications.</p>
+                    <div class="mt-4 flex items-center gap-x-6">
+                        <a href="https://lu.ma/fy72j0jm" target="_blank" rel="noopener noreferrer"
+                            class="rounded-md bg-custom-blue px-6 py-3 text-lg font-bold text-black shadow-lg hover:bg-custom-blue-dark focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-indigo-400 transform hover:scale-105 transition-all duration-200">Register Now</a>
+                        <a href="#" class="text-lg font-semibold text-white">View Timeline <span
+                                aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- About the Hackathon -->
+        <div id="about" class="bg-header-dark-section py-12 sm:py-8 sm:pt-4">
+            <div class="mx-auto max-w-5xl px-6 lg:px-8">
+                <div class="lg:mx-0 w-full flex flex-col justify-center align-center items-center">
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
+                        About the Hackathon
+                    </h2>
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                </div>
+                <div class="mt-4 space-y-2">
+                    <div
+                        class="flex flex-col justify-between md:flex-row items-center gap-8 max-w-5xl mx-auto py-4 px-6">
+                        <!-- Imagen con borde amarillo -->
+                        <div
+                            class="relative w-60 h-60 md:w-72 md:h-72 hover:rotate-[-10deg] hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 border-7 border-custom-blue rounded-full"></div>
+                            <img src="images/farmer.png" alt="Farmer"
+                                class="w-full h-full object-cover rounded-full border-4 border-white p-4">
+                        </div>
+
+                        <!-- Contenedor de texto -->
+                        <div class="max-w-lg text-white">
+                            <div class="flex flex-col">
+                                <h2 class="text-2xl md:text-3xl font-semibold text-white flex items-center gap-2">
+                                    What is Blue Ventures Hackathon?
+                                </h2>
+                                <span class="w-40 h-1 bg-custom-blue inline-block"></span>
+                            </div>
+
+                            <p class="mt-4 text-n leading-relaxed text-white">
+                                Join us this summer for our first-ever week-long innovation challenge. Over seven days, 
+                                you and your team will build a functional prototype with real-world applications. 
+                                This isn't your typical weekend hackathon. Our extended format allows for deeper research 
+                                and development. Work daily with experienced industry mentors who will guide you from concept to working demo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex flex-col-reverse justify-between md:flex-row items-center gap-8 max-w-5xl mx-auto py-6 px-6">
+                        <div class="max-w-lg text-white">
+                            <div class="flex flex-col">
+                                <h2 class="text-2xl md:text-3xl font-semibold text-white flex items-center gap-2">
+                                    Why Participate?
+                                </h2>
+                                <span class="w-40 h-1 bg-custom-blue inline-block"></span>
+                            </div>
+
+                            <p class="mt-4 text-n leading-relaxed text-white">
+                                Whether you're a seasoned programmer or just starting out, this is your chance to build industry connections, 
+                                learn from experts, and bring your ideas to life. Connect with great mentors. Transform your ideas into reality. 
+                                Shape what's next.
+                            </p>
+                            <div class="mt-5">
+                                <a href="https://lu.ma/fy72j0jm" target="_blank" rel="noopener noreferrer"
+                                    class="px-6 rounded-md bg-custom-blue py-3 text-lg font-bold text-black shadow-lg hover:bg-custom-blue-dark transform hover:scale-105 transition-all duration-200">
+                                    Register Now
+                                </a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="relative w-60 h-60 md:w-72 md:h-72 hover:rotate-[-10deg] hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 border-7 border-custom-blue rounded-full"></div>
+                            <img src="images/childs.png" alt="childs"
+                                class="w-full h-full object-cover rounded-full border-4 border-white p-4">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Event Timeline -->
+        <div id="timeline" class="bg-header-dark-section py-12 sm:py-8">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="lg:mx-0 w-full flex flex-col justify-center align-center items-center">
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
+                        Event Timeline
+                    </h2>
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                    <br>
+                    <br>
+                </div>
+                
+                <!-- Timeline Container -->
+                <div id="timeline-container"></div>
+            </div>
+        </div>
+
+
+        <!-- Project Tracks -->
+        <div class="bg-header-dark py-12 sm:py-8">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="lg:mx-0 w-full flex flex-col justify-center align-center items-center">
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
+                        Project Tracks
+                    </h2>
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                </div>
+                <br>
+                <ul role="list"
+                    class="mx-auto mt-4 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 pt-6">
+                    <li
+                        class="bg-gray-800 rounded-2xl group relative transition-all duration-500 ease-in-out hover:overflow-visible">
+                        <!-- Contenedor de imagen -->
+                        <div
+                            class="relative aspect-[3/2] w-full bg-blue-500/40 group-hover:bg-blue-500/50 rounded-t-2xl transition-all duration-500 ease-in-out group-hover:overflow-visible">
+                            <img src="images/products/pattern.png" alt="Background"
+                                class="absolute inset-0 w-full h-full object-cover opacity-10 rounded-2xl">
+
+                            <!-- Imagen -->
+                            <img class="absolute inset-0 w-full h-full object-scale-down transition-transform duration-500 group-hover:scale-125 group-hover:translate-y-[-20%] group-hover:z-10"
+                                src="/images/products/coffee.png" alt="AI/ML">
+                        </div>
+
+                        <div class="px-4">
+                            <h3 class="mt-2 text-xl font-semibold tracking-tight text-custom-blue">AI</h3>
+                            <p class="mt-1 mb-3 text-base/7 text-white text-justify leading-[1.5]">Artificial intelligence, machine learning,
+                                & large language models
+                            </p>
+                        </div>
+                    </li>
+
+                    <li
+                        class="bg-gray-800 rounded-2xl group relative transition-all duration-500 ease-in-out hover:overflow-visible">
+                        <!-- Contenedor de imagen -->
+                        <div
+                            class="relative aspect-[3/2] w-full bg-purple-500/40 group-hover:bg-purple-500/50 rounded-t-2xl transition-all duration-500 ease-in-out group-hover:overflow-visible">
+                            <img src="images/products/pattern.png" alt="Background"
+                                class="absolute inset-0 w-full h-full object-cover opacity-10  rounded-2xl">
+
+                            <!-- Imagen -->
+                            <img class="absolute inset-0 w-full h-full object-scale-down transition-transform duration-500 group-hover:scale-125 group-hover:translate-y-[-20%] group-hover:z-10"
+                                src="/images/products/avocado.png" alt="Web Development">
+                        </div>
+
+                        <div class="px-4">
+                            <h3 class="mt-2 text-xl font-semibold tracking-tight text-custom-blue">Robotics</h3>
+                            <p class="mt-1 mb-3 text-base/7 text-white text-justify leading-[1.5]">Robotics, hardware, IoT
+                                (some equipment available)
+                            </p>
+                        </div>
+                    </li>
+
+                    <li
+                        class="bg-gray-800 rounded-2xl group relative transition-all duration-500 ease-in-out hover:overflow-visible">
+                        <!-- Contenedor de imagen -->
+                        <div
+                            class="relative aspect-[3/2] w-full bg-green-500/40 group-hover:bg-green-500/50 rounded-t-2xl transition-all duration-500 ease-in-out group-hover:overflow-visible">
+                            <img src="images/products/pattern.png" alt="Background"
+                                class="absolute inset-0 w-full h-full object-cover opacity-10  rounded-2xl">
+
+                            <!-- Imagen -->
+                            <img class="absolute inset-0 w-full h-full object-scale-down transition-transform duration-500 group-hover:scale-125 group-hover:translate-y-[-20%] group-hover:z-10"
+                                src="/images/products/plantains.png" alt="Mobile Development">
+                        </div>
+
+                        <div class="px-4">
+                            <h3 class="mt-2 text-xl font-semibold tracking-tight text-custom-blue">Other</h3>
+                            <p class="mt-1 mb-3 text-base/7 text-white text-justify leading-[1.5]">Biology, chemistry, music, art, etc.
+                                Interdisciplinary applications of your choice!
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+                </div>
+
+
+        <!-- Our Mentors Section -->
+        <section class="py-24 bg-header-dark">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="lg:mx-0 w-full flex flex-col justify-center align-center items-center">
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
+                        Our Mentors
+                    </h2>
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                    <br>
+                    <br>
+                </div>
+                <div class="flex flex-wrap justify-center items-start gap-8">
+                    
+                    <div class="block group flex flex-col items-center w-48">
+                        <div class="relative mb-6">
+                            <img src="images/mentors/Jing Zhu.png" alt="Jing Zhu"
+                                class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
+                            Jing Zhu
+                        </h4>
+                        <span class="text-gray-300 text-center block transition-all duration-500 group-hover:text-white">Engineering Lead</span>
+                        <p class="text-xs text-gray-400 text-center mt-1">Rippling</p>
+                    </div>
+
+                    <div class="block group flex flex-col items-center w-48">
+                        <div class="relative mb-6">
+                            <img src="images/mentors/tahong.png" alt="Tao Hong"
+                                class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
+                            Tao Hong
+                        </h4>
+                        <span class="text-gray-300 text-center block transition-all duration-500 group-hover:text-white">ML Engineer</span>
+                        <p class="text-xs text-gray-400 text-center mt-1">Synopsys</p>
+                    </div>
+                    
+                    <div class="block group flex flex-col items-center w-48">
+                        <div class="relative mb-6">
+                            <img src="images/mentors/jiangqi_ying.png" alt="Jiangqi Ying"
+                                class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
+                            Jiangqi Ying
+                        </h4>
+                        <span class="text-gray-300 text-center block transition-all duration-500 group-hover:text-white">CEO</span>
+                        <p class="text-xs text-gray-400 text-center mt-1">Chinese American Network (CAN)</p>
+                    </div>
+                    
+                    <div class="block group flex flex-col items-center w-48">
+                        <div class="relative mb-6">
+                            <img src="images/mentors/jnigwen_wang.png" alt="Jingwen Wang"
+                                class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
+                            Jingwen Wang
+                        </h4>
+                        <span class="text-gray-300 text-center block transition-all duration-500 group-hover:text-white">System Architect</span>
+                        <p class="text-xs text-gray-400 text-center mt-1">Apple</p>
+                    </div>
+                    
+                    <div class="block group flex flex-col items-center w-48">
+                        <div class="relative mb-6">
+                            <img src="images/mentors/dave.png" alt="Dave Wang"
+                                class="w-40 h-40 rounded-full mx-auto transition-all duration-500 object-cover border border-solid border-transparent group-hover:border-custom-blue" />
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-2 capitalize text-center transition-all duration-500 group-hover:text-custom-blue">
+                            Dave Wang
+                        </h4>
+                        <span class="text-gray-300 text-center block transition-all duration-500 group-hover:text-white">Senior Software Engineer</span>
+                        <p class="text-xs text-gray-400 text-center mt-1">Cisco</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Our Partners -->
+        <div class="bg-header-dark h-full">
+            <div class="relative w-screen h-full">
+                <img src="images/bg-partners.png" class="absolute inset-0 w-full h-full object-cover z-0"
+                    alt="Background">
+                <div class="relative z-10 py-10 ">
+                    <div class="lg:mx-0 w-full flex flex-col justify-center align-center items-center">
+                        <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
+                            Our Partners
+                        </h2>
+                        <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                        <br>
+                    </div>
+                    <div data-controller="marquee" class="overflow-hidden w-full ">
+                        <div data-marquee-target="logos" class="flex space-x-4 md:space-x-10 w-max">
+                            <img src="images/brands/beshton_software_logo.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Beshton Software Logo">
+                            <img src="images/brands/panbotica.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Panbotica Logo">
+                            <img src="images/brands/growth-logo.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Growth Logo">
+                            <img src="images/brands/can.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Can Logo">
+                            <img src="images/brands/beshton_software_logo.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Beshton Software Logo">
+                            <img src="images/brands/panbotica.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Panbotica Logo">
+                            <img src="images/brands/growth-logo.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Growth Logo">
+                            <img src="images/brands/can.png" class="h-28 md:px-8 rounded-lg mix-blend-multiply" alt="Can Logo">
+                        </div>
+                    <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FAQ Section -->
+        <section class="bg-header-dark text-white py-16 pb-48">
+            <div class="container flex flex-col justify-center p-4 mx-auto md:p-8">
+                <div class="lg:mx-0 w-full flex flex-col justify-center align-center items-center">
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-custom-blue sm:text-5xl">
+                        F.A.Q
+                    </h2>
+                    <img class="w-56 transform rotate-x-180 mt-2" src="images/divider.png" alt="">
+                </div>
+                <div class="flex flex-col space-y-4 mt-8">
+                    <details class="border-b border-custom-blue pb-4">
+                        <summary class="py-4 outline-none cursor-pointer focus:underline font-bold text-white">What is a hackathon?</summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-white">A hackathon is a collaborative event where teams of developers, designers, and entrepreneurs come together to build innovative projects in a limited time frame. It's a great opportunity to learn new skills, meet like-minded people, and bring your creative ideas to life!</p>
+                        </div>
+                    </details>
+                    <details class="border-b border-custom-blue pb-4">
+                        <summary class="py-4 outline-none cursor-pointer focus:underline font-bold text-white">Who can participate?</summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-white">Our hackathon is open to students of all skill levels from high school to graduate school. Whether you're a complete beginner or an experienced developer, there's a place for you! We welcome participants from all backgrounds and disciplines.</p>
+                        </div>
+                    </details>
+                    <details class="border-b border-custom-blue pb-4">
+                        <summary class="py-4 outline-none cursor-pointer focus:underline font-bold text-white">Do I need a team?</summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-white">Not at all! You can participate solo, come with a pre-formed team, or find teammates once you arrive. We'll help match you with others who share similar interests or complementary skills.</p>
+                        </div>
+                    </details>
+                    <details class="border-b border-custom-blue pb-4">
+                        <summary class="py-4 outline-none cursor-pointer focus:underline font-bold text-white">What should I bring?</summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-white">Bring your laptop, charger, any hardware you want to work with, and a learner's attitude! We'll provide the coffee, meals, snacks, drinks, and swag.</p>
+                        </div>
+                    </details>
+                    <details class="border-b border-custom-blue pb-4">
+                        <summary class="py-4 outline-none cursor-pointer focus:underline font-bold text-white">Is there a cost to participate?</summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-white">The participation fee is $50. We cover meals, snacks, swag, and all event activities. Please contact us if you'd like to participate, but cost is an issue.</p>
+                        </div>
+                    </details>
+                    <details class="border-b border-custom-blue pb-4">
+                        <summary class="py-4 outline-none cursor-pointer focus:underline font-bold text-white">What kind of projects can I build?</summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-white">Anything you can imagine! Projects can be web apps, mobile apps, hardware hacks, games, AI/ML projects, or even music and poetry. We'll have several tracks and sponsor challenges with specific themes, but creativity is encouraged.</p>
+                        </div>
+                    </details>
+                    <details class="border-b border-custom-blue pb-4">
+                        <summary class="py-4 outline-none cursor-pointer focus:underline font-bold text-white">What if I'm a beginner?</summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-white">Perfect! Hackathons are great learning experiences. We'll have mentors available throughout the event, beginner-friendly workshops, and plenty of resources to help you get started.</p>
+                        </div>
+                    </details>
+                    <details class="pb-4">
+                        <summary class="py-4 outline-none cursor-pointer focus:underline font-bold text-white">What are the prizes?</summary>
+                        <div class="px-4 pb-4">
+                            <p class="text-white">We have prizes for overall winners, track-specific categories, sponsor challenges, and special recognition awards. Prizes include cash awards, tech gadgets, internship opportunities, and exclusive swag. But remember, the real prize is the experience and connections you'll make!</p>
+                        </div>
+                    </details>
+                </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Our statistics
+        <div class="bg-yellow-800 h-full">
+            <div class="relative w-screen h-full">
+                <img src="images/bg-partners.png" class="absolute inset-0 w-full h-full object-cover z-0"
+                    alt="Background">
+                <div class="relative z-10 py-10 ">
+                    <div
+                        class="max-w-screen-xl mx-auto flex gap-x-6 justify-between items-center font-semibold text-4xl text-white mb-8">
+                        <div class="text-center text-green-950">
+                            <div class="flex justify-center">
+                                +
+                                <p class="text-4xl font-bold counter " data-target="1230">0</p>
+                            </div>
+                            <p class="">Clientes</p>
+                        </div>
+                        <div class="text-center text-green-950">
+                            <div class="flex justify-center">
+                                +
+                                <p class="text-4xl font-bold counter " data-target="1230">0</p>
+                            </div>
+                            <p class="">Clientes</p>
+                        </div>
+                        <div class="font-semibold">
+                            <div class="c-circle">
+                                <div class="c-logo"></div>
+                            </div>
+                        </div>
+                        <div class="text-center text-green-950">
+                            <div class="flex justify-center">
+                                +
+                                <p class="text-4xl font-bold counter " data-target="1">0</p>
+                            </div>
+                            <p class="">Clientes</p>
+                        </div>
+                        <div class="text-center text-green-950">
+                            <div class="flex justify-center">
+                                +
+                                <p class="text-4xl font-bold counter " data-target="1230">0</p>
+                            </div>
+                            <p class="">Clientes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+    </main>
+
+
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-header-dark text-white">
+        <br>
+        <div class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+            <div class="grid gap-8 lg:gap-24 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <a href="/" aria-label="Go home" title="Company" class="inline-flex items-center">
+                        <svg class="w-8 text-custom-blue" viewBox="0 0 24 24" stroke-linejoin="round" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" stroke="currentColor" fill="none">
+                            <rect x="3" y="1" width="7" height="12"></rect>
+                            <rect x="3" y="17" width="7" height="6"></rect>
+                            <rect x="14" y="1" width="7" height="6"></rect>
+                            <rect x="14" y="11" width="7" height="12"></rect>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold tracking-wide text-white uppercase">Hackathon 2025</span>
+                    </a>
+                    <div class="mt-6 lg:max-w-sm">
+                        <p class="text-sm text-gray-300">
+                            Join us for an incredible week of innovation, collaboration, and creativity. Build amazing projects, learn from experts, and connect with like-minded developers.
+                        </p>
+                        <p class="mt-4 text-sm text-gray-300">
+                            Don't miss this opportunity to showcase your skills and bring your ideas to life in our state-of-the-art venue.
+                        </p>
+                    </div>
+                </div>
+                <div class="space-y-2 text-sm">
+                    <p class="text-base font-bold tracking-wide text-custom-blue">Contacts</p>
+                    
+                    <div class="flex">
+                        <p class="mr-1 text-gray-300">Email: </p>
+                        <a href="mailto:blue9ventures@gmail.com" aria-label="Our email" title="Our email" class="transition-colors duration-300 text-custom-blue hover:text-blue-400"> blue9ventures@gmail.com</a>
+                    </div>
+                    <div class="flex">
+                        <p class="mr-1 text-gray-300">Address: </p>
+                        <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" aria-label="Our address" title="Our address" class="transition-colors duration-300 text-custom-blue hover:text-blue-400">
+                            Blue Ventures Sunnyvale, CA 94086, USA
+                        </a>
+                    </div>
+                </div>
+                <div class="space-y-2 text-sm">
+                    <p class="text-base font-bold tracking-wide text-custom-blue">Links</p>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#faq" class="text-gray-300 transition-colors duration-300 hover:text-custom-blue">F.A.Q</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="flex justify-center pt-5 pb-10 border-t border-gray-700">
+                <p class="text-sm text-gray-400">
+                    © Copyright 2025 Blue Ventures. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
